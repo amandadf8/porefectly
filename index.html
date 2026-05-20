@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Porefectly</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ICON -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+      <div class="logo">
+        Porefectly
+      </div>
+
+      <div class="menu">
+
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Recommendation</a>
+
+      </div>
+
+    </nav>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="hero-text">
+
+        <h1>
+          Choose a Better You
+        </h1>
+
+        <p>
+          Temukan skincare terbaik berdasarkan
+          tipe dan permasalahan kulitmu.
+        </p>
+
+        <button class="btn">
+          Start Analysis
+        </button>
+
+      </div>
+
+      <div class="hero-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800"
+          alt=""
+        >
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         FORM SECTION
+    ========================== -->
+
+    <section class="form-section">
+
+      <!-- HEADER -->
+      <div class="header">
+
+        <h2>
+          Yuk, kenali kulitmu!
+        </h2>
+
+        <p>
+          Pilih tipe kulit dan permasalahan kulitmu
+          untuk mendapatkan rekomendasi terbaik.
+        </p>
+
+      </div>
+
+      <!-- FORM -->
+      <div class="form-container">
+
+        <!-- TIPE KULIT -->
+        <div class="section">
+
+          <h3>1. Tipe Kulit</h3>
+
+          <div class="skin-grid">
+
+            <div class="skin-card"
+              onclick="selectSkin(this, 'berminyak')">
+
+              <i class="fa-solid fa-droplet"></i>
+
+              <p>Berminyak</p>
+
+            </div>
+
+            <div class="skin-card"
+              onclick="selectSkin(this, 'kering')">
+
+              <i class="fa-solid fa-water"></i>
+
+              <p>Kering</p>
+
+            </div>
+
+            <div class="skin-card"
+              onclick="selectSkin(this, 'normal')">
+
+              <i class="fa-regular fa-star"></i>
+
+              <p>Normal</p>
+
+            </div>
+
+            <div class="skin-card"
+              onclick="selectSkin(this, 'kombinasi')">
+
+              <i class="fa-solid fa-face-smile"></i>
+
+              <p>Kombinasi</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- MASALAH KULIT -->
+        <div class="section">
+
+          <h3>
+            2. Permasalahan Kulit
+          </h3>
+
+          <small>
+            Bisa pilih lebih dari 1
+          </small>
+
+          <div class="problem-grid">
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'acne')">
+
+              <i class="fa-solid fa-circle"></i>
+
+              <p>Acne</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'aging')">
+
+              <i class="fa-solid fa-hourglass"></i>
+
+              <p>Aging</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'dark spots')">
+
+              <i class="fa-solid fa-sun"></i>
+
+              <p>Dark Spots</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'brightening')">
+
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+              <p>Brightening</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'scar')">
+
+              <i class="fa-solid fa-bandage"></i>
+
+              <p>Scar</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'large pores')">
+
+              <i class="fa-solid fa-braille"></i>
+
+              <p>Large Pores</p>
+
+            </div>
+
+            <div class="problem-card"
+              onclick="toggleProblem(this, 'skin texture')">
+
+              <i class="fa-solid fa-layer-group"></i>
+
+              <p>Skin Texture</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="button-container">
+
+        <button onclick="getRecommendation()">
+
+          ✨ Dapatkan Rekomendasi
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         RESULT SECTION
+    ========================== -->
+
+    <section class="result-section">
+
+      <h2>
+        Recommendation Result
+      </h2>
+
+      <div class="cards" id="resultContainer">
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

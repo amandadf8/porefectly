@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Porefectly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <h2>Porefectly ✦</h2>
+
+        <span>Choose a better you</span>
+
+    </div>
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#how-it-works">
+                How It Works
+            </a>
+        </li>
+
+    </ul>
+
+    <button class="btn-nav"
+            onclick="scrollToForm()">
+        Get Recommendation
+    </button>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section
+    id="home"
+    class="hero">
+
+    <div class="hero-left">
+
+        <h1>Porefectly</h1>
+
+        <h2>Choose a better you</h2>
+
+        <p>
+            Sistem rekomendasi skincare berdasarkan
+            jenis kulit dan masalah kulitmu,
+            untuk hasil yang lebih sehat dan percaya diri.
+        </p>
+
+        <div class="hero-features">
+
+            <div class="feature">
+
+                <div class="icon">💧</div>
+
+                <span>Personalized Recommendation</span>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="icon">🛡️</div>
+
+                <span>Science-Based Matching</span>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="icon">🌿</div>
+
+                <span>Better Skin Better You</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img src="images/heroo.png">
+
+    </div>
+
+</section>
+
+
+<!-- ================= FORM ================= -->
+
+<section id="recommendation" class="recommendation-box">
+
+    <h2>Temukan Skincare yang Tepat untuk Kulitmu</h2>
+
+    <p>
+        Pilih jenis kulit dan masalah kulit yang kamu alami
+    </p>
+
+    <div class="form-container">
+
+        <!-- Skin -->
+
+        <div class="form-side">
+
+            <h3>Jenis Kulit</h3>
+
+            <div class="skin-grid">
+
+                <div class="skin-card"
+                     onclick="selectSkin(this,'Dry')">
+
+                    💧
+                    <span>Kering</span>
+
+                </div>
+
+                <div class="skin-card"
+                     onclick="selectSkin(this,'Normal')">
+
+                    🌿
+                    <span>Normal</span>
+
+                </div>
+
+                <div class="skin-card"
+                     onclick="selectSkin(this,'Oily')">
+
+                    ✨
+                    <span>Berminyak</span>
+
+                </div>
+
+                <div class="skin-card"
+                     onclick="selectSkin(this,'Combination')">
+
+                    ⚖️
+                    <span>Kombinasi</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Problem -->
+
+        <div class="form-side">
+
+            <h3>Masalah Kulit</h3>
+
+            <div class="problem-grid">
+
+                <button onclick="toggleProblem(this,'Acne')">Jerawat</button>
+                <button onclick="toggleProblem(this,'Large Pores')">Pori Besar</button>
+                <button onclick="toggleProblem(this,'Brightening')">Kulit Kusam</button>
+                <button onclick="toggleProblem(this,'Skin Texture')">Tekstur Tidak Rata</button>
+                <button onclick="toggleProblem(this,'Dark Spots')">Noda Hitam</button>
+                <button onclick="toggleProblem(this,'Aging')">Kerutan</button>
+                <button onclick="toggleProblem(this,'Scar')">Bekas Jerawat</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="btn-recommend"
+            onclick="getRecommendation()">
+
+        Dapatkan Rekomendasi
+
+    </button>
+
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section
+    id="how-it-works"
+    class="steps">
+
+    <h2>Bagaimana Porefectly Bekerja?</h2>
+
+    <div class="step-grid">
+
+        <div class="step-card">
+
+            <h3>1</h3>
+
+            <h4>Isi Informasi Kulitmu</h4>
+
+            <p>
+                Pilih jenis kulit dan masalah kulit
+                yang kamu alami.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>2</h3>
+
+            <h4>Analisis dan Matching</h4>
+
+            <p>
+                Sistem kami menganalisis dan
+                mencocokkan dengan produk terbaik.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>3</h3>
+
+            <h4>Rekomendasi Produk</h4>
+
+            <p>
+                Dapatkan rekomendasi skincare
+                yang paling sesuai untukmu.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>4</h3>
+
+            <h4>Kulit Lebih Sehat</h4>
+
+            <p>
+                Rawat kulit dengan produk yang tepat
+                dan hasil yang lebih optimal.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULT ================= -->
+
+<section id="resultSection">
+
+    <h2 class="section-title">
+
+        Your Personalized Routine
+
+    </h2>
+
+    <div id="resultContainer"></div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

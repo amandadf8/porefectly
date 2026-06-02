@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 # PATH SETUP
 # ============================================================
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 MODEL_DIR = BASE_DIR / "models" / "classification"
 
 
@@ -25,7 +25,7 @@ MODEL_DIR = BASE_DIR / "models" / "classification"
 # DATABASE SETUP
 # ============================================================
 
-load_dotenv(BASE_DIR / "backend" / ".env")
+load_dotenv(BASE_DIR / ".env")
 
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD")

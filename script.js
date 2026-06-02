@@ -1,124 +1,323 @@
 let selectedSkin = "";
-
 let selectedProblems = [];
 
-/* =========================
-   SELECT TIPE KULIT
-========================= */
+/* ========================= */
+/* NAVIGATION */
+/* ========================= */
 
-function selectSkin(element, skin){
+function scrollToForm() {
 
-  selectedSkin = skin;
+    document
+        .getElementById("recommendation")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
-  document.querySelectorAll(".skin-card")
-    .forEach(card => {
-      card.classList.remove("active");
+}
+
+/* ========================= */
+/* SKIN TYPE */
+/* ========================= */
+
+function selectSkin(element, skin) {
+
+    selectedSkin = skin;
+
+    document
+        .querySelectorAll(".skin-card")
+        .forEach(card => {
+            card.classList.remove("active");
+        });
+
+    element.classList.add("active");
+
+}
+
+/* ========================= */
+/* SKIN PROBLEM */
+/* ========================= */
+
+function toggleProblem(element, problem) {
+
+    element.classList.toggle("active");
+
+    if (selectedProblems.includes(problem)) {
+
+        selectedProblems =
+            selectedProblems.filter(
+                item => item !== problem
+            );
+
+    } else {
+
+        selectedProblems.push(problem);
+
+    }
+
+}
+
+/* ========================= */
+/* GET RECOMMENDATION */
+/* ========================= */
+
+async function getRecommendation() {
+
+    if (selectedSkin === "") {
+
+        alert("Pilih jenis kulit terlebih dahulu");
+        return;
+
+    }
+
+    if (selectedProblems.length === 0) {
+
+        alert("Pilih minimal satu masalah kulit");
+        return;
+
+    }
+
+    const button =
+        document.querySelector(".btn-recommend");
+
+    button.disabled = true;
+    button.innerHTML = "Mencari Rekomendasi...";
+
+    try {
+
+        const response = await fetch(
+            "https://porefectly-production.up.railway.app/recommend-all",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    skin_type: selectedSkin,
+
+                    skin_problems: selectedProblems,
+
+                    top_n: 5
+
+                })
+
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        renderResult(data);
+
+        document
+            .getElementById("resultSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Gagal terhubung ke server rekomendasi."
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+        button.innerHTML =
+            "Dapatkan Rekomendasi";
+
+    }
+
+}
+
+/* ========================= */
+/* RENDER RESULT */
+/* ========================= */
+
+function renderResult(data) {
+
+    const container =
+        document.getElementById(
+            "resultContainer"
+        );
+
+    container.innerHTML = "";
+
+    let html = `
+
+        <div class="routine-section">
+
+            <h2 class="routine-title">
+                Recommended Skincare Products
+            </h2>
+
+    `;
+
+    Object.keys(data.results).forEach(type => {
+
+        html += createCategory(
+            type,
+            data.results[type]
+                ?.recommendations || []
+        );
+
     });
 
-  element.classList.add("active");
+    html += `
+        </div>
+    `;
+
+    container.innerHTML = html;
+
 }
 
-/* =========================
-   MULTIPLE SELECT PROBLEM
-========================= */
+/* ========================= */
+/* PRODUCT CATEGORY */
+/* ========================= */
 
-function toggleProblem(element, problem){
+function createCategory(type, products) {
 
-  element.classList.toggle("active");
+    if (products.length === 0)
+        return "";
 
-  if(selectedProblems.includes(problem)){
+    let html = `
 
-    selectedProblems =
-      selectedProblems.filter(
-        item => item !== problem
-      );
+        <div class="category-block">
 
-  }else{
+            <div class="timeline-title">
 
-    selectedProblems.push(problem);
+                ${type}
 
-  }
+            </div>
 
-  console.log(selectedProblems);
-}
+            <div class="product-grid">
 
-/* =========================
-   FETCH API FASTAPI
-========================= */
+    `;
 
-async function getRecommendation(){
+    products.forEach(product => {
 
-  if(selectedSkin === ""){
-    alert("Pilih tipe kulit");
-    return;
-  }
+        let ingredientsRaw =
+            product.ingredients ||
+            product.ingridients ||
+            "";
 
-  if(selectedProblems.length === 0){
-    alert("Pilih minimal 1 masalah kulit");
-    return;
-  }
+        let ingredientsList = "";
 
-  try{
+        if (ingredientsRaw !== "") {
 
-    const response = await fetch(
-      "http://127.0.0.1:8000/recommend",
-      {
-        method:"POST",
+            ingredientsList =
+                `<ul class="ingredient-list">`;
 
-        headers:{
-          "Content-Type":"application/json"
-        },
+            ingredientsRaw
+                .split(",")
 
-        body:JSON.stringify({
+                .forEach(item => {
 
-          jenis_kulit: selectedSkin,
+                    ingredientsList +=
+                    `
+                        <li>
+                            ${item.trim()}
+                        </li>
+                    `;
 
-          masalah_kulit: selectedProblems
+                });
 
-        })
+            ingredientsList +=
+                `</ul>`;
 
-      }
-    );
+        }
 
-    const data = await response.json();
+        html += `
 
-    console.log(data);
+            <div class="product-card">
 
-    const resultContainer =
-      document.getElementById("resultContainer");
+                <img
+                    src="${getImage(type)}"
+                    class="product-image"
+                >
 
-    resultContainer.innerHTML = "";
+                <div class="product-content">
 
-    data.rekomendasi.forEach(item => {
+                    <h3>
+                        ${product.name}
+                    </h3>
 
-      resultContainer.innerHTML += `
+                    <p class="brand">
+                        ${product.brand}
+                    </p>
 
-        <div class="card">
+                    <details>
 
-          <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?q=80&w=800">
+                        <summary>
+                            Ingredients
+                        </summary>
 
-          <h3>${item.nama_produk}</h3>
+                        ${ingredientsList}
 
-          <p><b>Brand:</b> ${item.brand}</p>
+                    </details>
 
-          <p><b>Rating:</b> ⭐ ${item.rating}</p>
+                </div>
 
-          <p class="price">
-            Rp ${item.harga}
-          </p>
+            </div>
+
+        `;
+
+    });
+
+    html += `
+
+            </div>
 
         </div>
 
-      `;
+    `;
 
-    });
+    return html;
 
-  }catch(error){
+}
 
-    console.log(error);
+/* ========================= */
+/* PRODUCT IMAGE */
+/* ========================= */
 
-    alert("Terjadi error saat mengambil data");
+function getImage(type) {
 
-  }
+    const imageMap = {
+
+        "Face Cleanser":
+            "images/cleanser.jpg",
+
+        "Toner":
+            "images/toner.jpg",
+
+        "Serum":
+            "images/serum.jpg",
+
+        "Moisturizer":
+            "images/moisturizer.jpg",
+
+        "Sunscreen":
+            "images/sunscreen.jpg",
+
+        "Exfoliator":
+            "images/exfoliator.jpg",
+
+        "Makeup Remover":
+            "images/remover.jpg"
+
+    };
+
+    return imageMap[type] ||
+        "images/default.jpg";
 
 }

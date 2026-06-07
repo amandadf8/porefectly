@@ -327,25 +327,29 @@ function toggleModelModal() {
     const modal = document.getElementById('model-modal');
     if (modal.style.display === 'none' || modal.style.display === '') {
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Mencegah scroll body saat modal terbuka
+        document.body.style.overflow = 'hidden'; // Mencegah scroll body
     } else {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
     }
 }
 
-// TUTUP MODAL JIKA KLIK DI LUAR AREA PUTIH
+// FUNGSI GANTI TAB (DIPERBAIKI)
+function openModelTab(tabId, element) {
+    // 1. Sembunyikan semua konten tab
+    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+    
+    // 2. Hapus status active dari semua tombol tab
+    document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
+    
+    // 3. Tampilkan tab yang dipilih
+    document.getElementById(tabId).classList.add('active');
+    
+    // 4. Set tombol yang diklik menjadi active
+    element.classList.add('active');
+}
+
+// TUTUP MODAL JIKA KLIK DI AREA GELAP (LUAR KOTAK PUTIH)
 document.getElementById('model-modal').addEventListener('click', function(e) {
     if (e.target === this) toggleModelModal();
 });
-
-// FUNGSI TAB DI DALAM MODAL (Sama seperti versi section sebelumnya)
-function openModelTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    
-    document.getElementById(tabId).classList.add('active');
-    const clickedBtn = Array.from(document.querySelectorAll('.tab-btn'))
-        .find(btn => btn.getAttribute('onclick').includes(tabId));
-    if (clickedBtn) clickedBtn.classList.add('active');
-}

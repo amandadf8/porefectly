@@ -377,35 +377,25 @@ summary{
     font-size:14px;
 }
 
-/* STYLE KHUSUS SECTION EDA (ISOLATED) */
-#eda-analysis-section {
+/* STYLE KHUSUS TAB INFO MODEL */
+#model-info-section {
     padding: 60px 20px;
-    background-color: #f8f9fa; /* Warna background lembut */
+    background-color: #f8f9fa;
     border-top: 1px solid #eaeaea;
-    font-family: inherit; /* Mengikuti font website utama */
+    margin-top: 40px;
 }
 
-.eda-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.info-container { max-width: 1200px; margin: 0 auto; }
 
-.eda-title {
+.info-title {
     text-align: center;
     color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 2rem;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
 }
 
-.eda-subtitle {
-    text-align: center;
-    color: #7f8c8d;
-    margin-bottom: 40px;
-    font-size: 1rem;
-}
-
-/* Styling Tombol Tab */
-.eda-tabs {
+/* Tombol Tab */
+.info-tabs {
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -422,27 +412,23 @@ summary{
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
 }
 
-.tab-btn:hover {
-    background: #d0d0d0;
+.tab-btn:hover { background: #d0d0d0; }
+.tab-btn.active { 
+    background: #4A90E2; 
+    color: white; 
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3); 
 }
 
-.tab-btn.active {
-    background: #4A90E2; /* Warna biru brand Porefectly */
-    color: white;
-    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
-}
-
-/* Grid Layout Responsif */
-.eda-grid {
+/* Grid & Card Layout */
+.info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
 }
 
-.eda-card {
+.info-card {
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -451,41 +437,16 @@ summary{
     text-align: center;
 }
 
-.eda-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.eda-card h3 {
-    font-size: 1.1rem;
-    color: #34495e;
-    margin-bottom: 15px;
-    margin-top: 0;
-}
-
-.eda-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: contain;
-    background: #fff; /* Jaga-jaga jika gambar transparan */
-}
-
-.full-width {
-    grid-column: 1 / -1; /* Memaksa card memanjang penuh */
-}
+.info-card:hover { transform: translateY(-5px); }
+.info-card h3 { font-size: 1.1rem; color: #34495e; margin-bottom: 15px; margin-top: 0; }
+.info-card img { width: 100%; height: auto; border-radius: 8px; object-fit: contain; }
+.full-width { grid-column: 1 / -1; }
 
 /* Animasi Transisi Tab */
-.tab-content {
-    display: none;
-    animation: fadeInEda 0.4s ease-in-out;
-}
+.tab-content { display: none; animation: fadeInInfo 0.4s ease-in-out; }
+.tab-content.active { display: block; }
 
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeInEda {
+@keyframes fadeInInfo {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }

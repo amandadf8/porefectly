@@ -322,21 +322,19 @@ function getImage(type) {
 
 }
 
-// FUNGSI NAVIGASI TAB EDA
-function openEdaTab(tabId) {
-    // 1. Sembunyikan semua konten tab EDA
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
-
-    // 2. Hapus status 'active' dari semua tombol tab EDA
-    const buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    // 3. Tampilkan tab yang dipilih
+// FUNGSI NAVIGASI TAB INFO MODEL
+function openModelTab(tabId) {
+    // Sembunyikan semua konten tab
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    
+    // Hapus status active dari semua tombol
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    // Tampilkan tab yang dipilih
     document.getElementById(tabId).classList.add('active');
-
-    // 4. Set tombol yang diklik menjadi aktif
-    // Mencari tombol yang memiliki onclick sesuai tabId
-    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
-    if (activeBtn) activeBtn.classList.add('active');
+    
+    // Set tombol yang diklik menjadi aktif
+    const clickedBtn = Array.from(document.querySelectorAll('.tab-btn'))
+        .find(btn => btn.getAttribute('onclick').includes(tabId));
+    if (clickedBtn) clickedBtn.classList.add('active');
 }

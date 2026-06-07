@@ -273,63 +273,62 @@
 
 </section>
 
-<!-- MULAI SECTION ANALISIS DATA -->
-<section id="eda-analysis-section">
-    <div class="eda-container">
-        <h2 class="eda-title">📊 Wawasan Data & Performa Model</h2>
-        <p class="eda-subtitle">Analisis mendalam dari dataset skincare dan evaluasi model machine learning Porefectly.</p>
-
-        <!-- Tombol Navigasi Tab -->
-        <div class="eda-tabs">
-            <button class="tab-btn active" onclick="openEdaTab('tab-eda')">Exploratory Data Analysis</button>
-            <button class="tab-btn" onclick="openEdaTab('tab-model')">Evaluasi Model</button>
-            <button class="tab-btn" onclick="openEdaTab('tab-insights')">Wawasan Produk</button>
+<!-- SECTION TAB INFO MODEL & EDA -->
+<section id="model-info-section">
+    <div class="info-container">
+        <h2 class="info-title">🔬 Info Model & Analisis Data</h2>
+        
+        <!-- Navigasi Tab -->
+        <div class="info-tabs">
+            <button class="tab-btn active" onclick="openModelTab('tab-eda')">Exploratory Data Analysis</button>
+            <button class="tab-btn" onclick="openModelTab('tab-performance')">Performa Model</button>
+            <button class="tab-btn" onclick="openModelTab('tab-insights')">Wawasan Produk</button>
         </div>
 
         <!-- KONTEN TAB 1: EDA -->
         <div id="tab-eda" class="tab-content active">
-            <div class="eda-grid">
-                <div class="eda-card">
-                    <h3>Distribusi Kategori Produk</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Distribusi Kategori</h3>
                     <img src="assets/eda_product_distribution.png" alt="Distribusi Produk" loading="lazy">
                 </div>
-                <div class="eda-card">
-                    <h3>Bahan Aktif Paling Populer</h3>
+                <div class="info-card">
+                    <h3>Bahan Aktif Populer</h3>
                     <img src="assets/eda_top_ingredients.png" alt="Top Ingredients" loading="lazy">
                 </div>
-                <div class="eda-card full-width">
-                    <h3>Korelasi Antar Bahan Aktif</h3>
+                <div class="info-card full-width">
+                    <h3>Korelasi Antar Bahan</h3>
                     <img src="assets/eda_ingredients_correlation_heatmap.png" alt="Heatmap Korelasi" loading="lazy">
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN TAB 2: MODEL -->
-        <div id="tab-model" class="tab-content">
-            <div class="eda-grid">
-                <div class="eda-card">
+        <!-- KONTEN TAB 2: PERFORMA MODEL -->
+        <div id="tab-performance" class="tab-content">
+            <div class="info-grid">
+                <div class="info-card">
                     <h3>Confusion Matrix: Serum</h3>
                     <img src="assets/confusion_matrix_serum.png" alt="CM Serum" loading="lazy">
                 </div>
-                <div class="eda-card">
+                <div class="info-card">
                     <h3>Confusion Matrix: Moisturizer</h3>
                     <img src="assets/confusion_matrix_moisturizer.png" alt="CM Moisturizer" loading="lazy">
                 </div>
-                <div class="eda-card">
-                    <h3>Silhouette Score per Tipe</h3>
+                <div class="info-card">
+                    <h3>Silhouette Score</h3>
                     <img src="assets/silhouette_score_per_type.png" alt="Silhouette Score" loading="lazy">
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN TAB 3: INSIGHTS -->
+        <!-- KONTEN TAB 3: WAWASAN PRODUK -->
         <div id="tab-insights" class="tab-content">
-            <div class="eda-grid">
-                <div class="eda-card">
-                    <h3>Kompleksitas Formula per Tipe</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Kompleksitas Formula</h3>
                     <img src="assets/eda_complexity_by_type.png" alt="Complexity" loading="lazy">
                 </div>
-                <div class="eda-card">
+                <div class="info-card">
                     <h3>Rata-rata Kehadiran Bahan</h3>
                     <img src="assets/eda_avg_ingredients_by_type.png" alt="Avg Ingredients" loading="lazy">
                 </div>
@@ -337,7 +336,6 @@
         </div>
     </div>
 </section>
-<!-- SELESAI SECTION ANALISIS DATA -->
 
 <script src="script.js"></script>
 

@@ -412,6 +412,10 @@ summary{
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 
+/* =========================================
+   STYLE MODAL & TAB NAVIGASI (FINAL FIX)
+   ========================================= */
+
 /* Overlay Background */
 .modal-overlay {
     position: fixed; 
@@ -422,7 +426,7 @@ summary{
     display: flex; 
     justify-content: center; 
     align-items: center;
-    padding: 20px; /* Jarak aman dari tepi layar HP/Desktop */
+    padding: 20px; /* Jarak aman dari tepi layar */
 }
 
 /* Konten Modal Utama */

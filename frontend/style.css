@@ -31,6 +31,12 @@ body{
     font-size:13px;
 }
 
+.nav-right-side {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Jarak antara link menu dengan grup tombol */
+}
+
 .nav-menu{
     display:flex;
     gap: 20px;
@@ -40,6 +46,12 @@ body{
 .nav-menu a{
     text-decoration:none;
     color:#406ba7;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
 }
 
 .btn-nav{
@@ -428,10 +440,10 @@ summary{
 .tab-link.active { background: #4A90E2; color: white; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2); }
 
 /* GRID LAYOUT UNTUK GAMBAR */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.card-img { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; }
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(2, 1fr)); gap: 20px; }
+.card-img { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; overflow: hidden; }
 .card-img h3 { font-size: 1.1rem; color: #333; margin-bottom: 10px; }
-.card-img img { width: 100%; height: auto; border-radius: 8px; }
+.card-img img { width: 100%; height: auto; border-radius: 8px; object-fit: contain; display: block;}
 .full-width { grid-column: 1 / -1; }
 
 /* ANIMASI & UTILITAS */

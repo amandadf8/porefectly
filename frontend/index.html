@@ -42,14 +42,15 @@
 
     </ul>
 
-    <button class="btn-nav"
-            onclick="scrollToForm()">
-        Get Recommendation
-    </button>
-
-    <button class="btn-info-model" onclick="toggleModelModal()">
-        <span>️</span> Info Model
-    </button>
+    <div class="nav-actions">
+        <button class="btn-nav" onclick="scrollToForm()">
+            Get Recommendation
+        </button>
+        
+        <button class="btn-info-model" onclick="toggleModelModal()">
+            <span>ℹ️</span> Info Model
+        </button>
+    </div>
 
 </nav>
 
@@ -298,75 +299,67 @@
 
         <!-- KONTEN TAB 1: EDA -->
         <div id="tab-eda" class="tab-pane active">
-            <div class="grid-layout">
-                <div class="card-img">
+            <div class="info-grid">
+                <div class="info-card">
                     <h3>Distribusi Produk</h3>
-                    <img src="assets/eda_product_distribution.png" alt="EDA Distribusi" loading="lazy">
+                    <img src="assets/eda_product_distribution.png" alt="Distribusi Produk" loading="lazy">
                 </div>
-                <div class="card-img">
+                <div class="info-card">
                     <h3>Top Ingredients</h3>
-                    <img src="assets/eda_top_ingredients.png" alt="EDA Top Ingredients" loading="lazy">
+                    <img src="assets/eda_top_ingredients.png" alt="Top Ingredients" loading="lazy">
                 </div>
-                <div class="card-img">
+                <div class="info-card full-width">
                     <h3>Korelasi Antar Fitur AfterUse</h3>
-                    <img src="assets/Heatmap Korelasi Antar Fitur afterUse.png" alt="EDA Korelasi Fitur" loading="lazy">
+                    <img src="assets/Heatmap%20Korelasi%20Antar%20Fitur%20afterUse.png" alt="Heatmap Korelasi" loading="lazy">
                 </div>
-                <div class="card-img">
+                <div class="info-card full-width">
                     <h3>Proporsi Fitur AfterUse per Type</h3>
-                    <img src="assets/Heatmap Proporsi Fitur afterUse per Type Produk.png" alt="EDA Proporsi Fitur" loading="lazy">
+                    <img src="assets/Heatmap%20Proporsi%20Fitur%20afterUse%20per%20Type%20Produk.png" alt="Proporsi Fitur" loading="lazy">
                 </div>
-                <div class="card-img">
+                <div class="info-card">
                     <h3>Bahan Dominan di Seluruh Kategori</h3>
-                    <img src="assets/eda_avg_ingredients_by_type.png" alt="EDA Bahan Dominan" loading="lazy">
+                    <img src="assets/eda_avg_ingredients_by_type.png" alt="Bahan Dominan" loading="lazy">
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN TAB 2: PERFORMA -->
+        <!-- KONTEN TAB 2: PERFORMA MODEL -->
         <div id="tab-performance" class="tab-pane">
-            <div class="grid-layout">
-                <div class="card-img">
+            <div class="info-grid">
+                <div class="info-card">
                     <h3>Confusion Matrix Serum</h3>
                     <img src="assets/confusion_matrix_serum.png" alt="CM Serum" loading="lazy">
                 </div>
-                <div class="grid-layout">
-                <div class="card-img">
-                    <h3>Confusion Matrix Sunscreen</h3>
-                    <img src="assets/confusion_matrix_sunscreen.png" alt="CM Sunscreen" loading="lazy">
-                </div>
-                <div class="card-img">
-                    <h3>Confusion Matrix Toner</h3>
-                    <img src="assets/confusion_matrix_toner.png" alt="CM Toner" loading="lazy">
-                </div>
-                <div class="card-img">
+                <div class="info-card">
                     <h3>Confusion Matrix Moisturizer</h3>
                     <img src="assets/confusion_matrix_moisturizer.png" alt="CM Moisturizer" loading="lazy">
                 </div>
-                <div class="card-img">
-                    <h3>Confusion Matrix Makeup Remover</h3>
-                    <img src="assets/confusion_matrix_makeup_remover.png" alt="CM Makeup Remover" loading="lazy">
+                <div class="info-card">
+                    <h3>Confusion Matrix Sunscreen</h3>
+                    <img src="assets/confusion_matrix_sunscreen.png" alt="CM Sunscreen" loading="lazy">
                 </div>
-                <div class="card-img">
+                <div class="info-card">
+                    <h3>Confusion Matrix Toner</h3>
+                    <img src="assets/confusion_matrix_toner.png" alt="CM Toner" loading="lazy">
+                </div>
+                <div class="info-card">
                     <h3>Confusion Matrix Face Cleanser</h3>
                     <img src="assets/confusion_matrix_face_cleanser.png" alt="CM Face Cleanser" loading="lazy">
                 </div>
-                <div class="card-img">
-                    <h3>Confusion Matrix Face Exfoliator</h3>
-                    <img src="assets/confusion_matrix_exfoliator.png" alt="CM Exfoliator" loading="lazy">
-                </div>
-                <div class="card-img">
+                <div class="info-card">
                     <h3>Silhouette Score</h3>
-                    <img src="assets/silhouette_score_per_type.png" alt="Silhouette" loading="lazy">
+                    <img src="assets/silhouette_score_per_type.png" alt="Silhouette Score" loading="lazy">
                 </div>
             </div>
         </div>
 
         <!-- KONTEN TAB 3: WAWASAN -->
         <div id="tab-insights" class="tab-pane">
-            <div class="grid-layout">
-                <div class="card-img full-width">
+            <div class="info-grid">
+                <div class="info-card full-width">
                     <h3>Top 10 Brand dengan Jumlah Produk Terbanyak</h3>
-                    <img src="assets/Top 10 Brand dengan Jumlah Produk Terbanyak.png" alt="Top Brand Terbanyak" loading="lazy">
+                    <!-- Gunakan %20 untuk spasi agar tidak error di Docker/Web -->
+                    <img src="assets/Top%2010%20Brand%20dengan%20Jumlah%20Produk%20Terbanyak.png" alt="Top Brand" loading="lazy">
                 </div>
             </div>
         </div>

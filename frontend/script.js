@@ -321,3 +321,22 @@ function getImage(type) {
         "images/default.jpg";
 
 }
+
+// FUNGSI NAVIGASI TAB EDA
+function openEdaTab(tabId) {
+    // 1. Sembunyikan semua konten tab EDA
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    // 2. Hapus status 'active' dari semua tombol tab EDA
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // 3. Tampilkan tab yang dipilih
+    document.getElementById(tabId).classList.add('active');
+
+    // 4. Set tombol yang diklik menjadi aktif
+    // Mencari tombol yang memiliki onclick sesuai tabId
+    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+    if (activeBtn) activeBtn.classList.add('active');
+}

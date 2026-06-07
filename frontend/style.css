@@ -394,7 +394,7 @@ summary{
     background-color: white;
     color: #4A90E2; /* Biru brand Porefectly */
     border: 2px solid #4A90E2;
-    padding: 12px 24px;
+    padding: 14px 24px;
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
@@ -439,11 +439,48 @@ summary{
 .tab-link:hover { background: #f0f4f8; color: #4A90E2; }
 .tab-link.active { background: #4A90E2; color: white; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2); }
 
-/* GRID LAYOUT UNTUK GAMBAR */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(2, 1fr)); gap: 20px; }
-.card-img { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; overflow: hidden; }
-.card-img h3 { font-size: 1.1rem; color: #333; margin-bottom: 10px; }
-.card-img img { width: 100%; height: auto; border-radius: 8px; object-fit: contain; display: block;}
+/* GRID LAYOUT UNTUK GAMBAR - DIPERBAIKI */
+.grid-layout { 
+    display: grid; 
+    /* PAKSA 2 KOLOM SAMA BESAR AGAR KANAN-KIRI */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    width: 100%;
+}
+
+.card-img { 
+    background: #f8f9fa; 
+    padding: 15px; 
+    border-radius: 12px; 
+    text-align: center; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-img h3 { 
+    font-size: 1.1rem; 
+    color: #333; 
+    margin-bottom: 10px; 
+    min-height: 40px; /* Agar judul sejajar meski beda panjang */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PERBAIKAN AGAR GAMBAR TIDAK NGE-ZOOM/TERPOTONG */
+.card-img img { 
+    width: 100%; 
+    max-width: 100%;
+    height: auto; 
+    max-height: 300px; /* BATASI TINGGI MAKSIMAL */
+    object-fit: contain; /* MENAMPILKAN SELURUH GAMBAR UTUH */
+    border-radius: 8px; 
+    background: white; /* BACKGROUND PUTIH BIAR GRAFIK JELAS */
+    display: block;
+}
+
 .full-width { grid-column: 1 / -1; }
 
 /* ANIMASI & UTILITAS */
@@ -453,3 +490,10 @@ summary{
 .close-btn:hover { color: #e74c3c; }
 @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* RESPONSIF HP */
+@media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+    .card-img img { max-height: 250px; }
+}

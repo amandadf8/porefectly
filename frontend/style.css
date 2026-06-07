@@ -394,7 +394,7 @@ summary{
     background-color: white;
     color: #4A90E2; /* Biru brand Porefectly */
     border: 2px solid #4A90E2;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -422,7 +422,7 @@ summary{
     display: flex; 
     justify-content: center; 
     align-items: center;
-    padding: 20px;
+    padding: 20px; /* Jarak aman dari tepi layar HP/Desktop */
 }
 
 /* Konten Modal Utama */
@@ -436,7 +436,8 @@ summary{
     position: relative;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
     animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow-y: auto; /* Scroll hanya di dalam modal */
+    overflow-y: auto; /* Scroll VERTIKAL saja */
+    overflow-x: hidden; /* PENTING: Hilangkan scroll horizontal */
 }
 
 /* Navigasi Tab */
@@ -491,11 +492,11 @@ summary{
 }
 
 /* =========================================
-   GRID LAYOUT GAMBAR (ANTI-NGEZOOM)
+   GRID LAYOUT GAMBAR (ANTI-SCROLL HORIZONTAL)
    ========================================= */
 .grid-layout { 
     display: grid; 
-    /* FIX: PAKSA 2 KOLOM SAMA BESAR */
+    /* PAKSA 2 KOLOM SAMA BESAR */
     grid-template-columns: repeat(2, 1fr); 
     gap: 24px; 
     width: 100%;
@@ -505,13 +506,14 @@ summary{
     background: #ffffff; 
     padding: 20px; 
     border-radius: 16px; 
-    text-align: center; 
+    text-align: center; /* Ini membuat judul CENTER */
     border: 1px solid #f0f0f0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Memusatkan konten secara horizontal */
+    overflow: hidden; /* Mencegah apapun keluar batas card */
 }
 
 .card-img:hover {
@@ -523,24 +525,25 @@ summary{
     font-size: 1.05rem; 
     color: #334155; 
     margin-bottom: 16px; 
-    min-height: 48px; /* Tinggi tetap agar judul sejajar */
+    min-height: 48px; /* Tinggi tetap agar sejajar */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Judul benar-benar di tengah */
     line-height: 1.4;
+    width: 100%;
 }
 
-/* KUNCI ANTI-NGEZOOM & PROPORSIONAL */
+/* KUNCI ANTI-NGEZOOM & FIT SELEBAR CONTAINER */
 .card-img img { 
-    width: 100%; 
-    max-width: 100%;
-    height: auto; 
-    max-height: 300px; /* BATAS TINGGI AGAR TIDAK KEPAJANG */
-    object-fit: contain; /* TAMPILKAN UTUH, JANGAN CROP */
+    width: 100% !important; /* Paksa lebar mengikuti card */
+    max-width: 100% !important;
+    height: auto !important; /* Tinggi menyesuaikan proporsi */
+    max-height: 350px; /* Batas tinggi agar tidak terlalu panjang */
+    object-fit: contain; /* Tampilkan UTUH, jangan dipotong */
     border-radius: 12px; 
     background: #ffffff;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; /* Tengah secara horizontal */
 }
 
 .full-width { 

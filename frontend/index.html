@@ -47,6 +47,8 @@
         Get Recommendation
     </button>
 
+    <button class="nav-btn-info" onclick="toggleModelModal()"> Info Model</button>
+
 </nav>
 
 <!-- ================= HERO ================= -->
@@ -273,37 +275,35 @@
 
 </section>
 
-<!-- SECTION TAB INFO MODEL & EDA -->
-<section id="model-info-section">
-    <div class="info-container">
-        <h2 class="info-title">Info Model & Analisis Data</h2>
+<!-- MODAL INFO MODEL (TERSEMBUNYI SECARA DEFAULT) -->
+<div id="model-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <span class="close-modal" onclick="toggleModelModal()">&times;</span>
         
-        <!-- Navigasi Tab -->
+        <h2 class="modal-title">🔬 Analisis Data & Performa Model</h2>
+        
+        <!-- Tab Navigasi di Dalam Modal -->
         <div class="info-tabs">
-            <button class="tab-btn active" onclick="openModelTab('tab-eda')">Exploratory Data Analysis</button>
-            <button class="tab-btn" onclick="openModelTab('tab-performance')">Performa Model</button>
-            <button class="tab-btn" onclick="openModelTab('tab-insights')">Wawasan Produk</button>
+            <button class="tab-btn active" onclick="openModelTab('tab-eda')">EDA</button>
+            <button class="tab-btn" onclick="openModelTab('tab-performance')">Performa</button>
+            <button class="tab-btn" onclick="openModelTab('tab-insights')">Wawasan</button>
         </div>
 
         <!-- KONTEN TAB 1: EDA -->
         <div id="tab-eda" class="tab-content active">
             <div class="info-grid">
                 <div class="info-card">
-                    <h3>Distribusi Kategori</h3>
-                    <img src="assets/eda_product_distribution.png" alt="Distribusi Produk" loading="lazy">
+                    <h3>Distribusi Produk</h3>
+                    <img src="assets/eda_product_distribution.png" alt="Distribusi" loading="lazy">
                 </div>
                 <div class="info-card">
-                    <h3>Bahan Aktif Populer</h3>
+                    <h3>Bahan Populer</h3>
                     <img src="assets/eda_top_ingredients.png" alt="Top Ingredients" loading="lazy">
-                </div>
-                <div class="info-card full-width">
-                    <h3>Korelasi Antar Bahan</h3>
-                    <img src="assets/eda_ingredients_correlation_heatmap.png" alt="Heatmap Korelasi" loading="lazy">
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN TAB 2: PERFORMA MODEL -->
+        <!-- KONTEN TAB 2: PERFORMA -->
         <div id="tab-performance" class="tab-content">
             <div class="info-grid">
                 <div class="info-card">
@@ -311,31 +311,23 @@
                     <img src="assets/confusion_matrix_serum.png" alt="CM Serum" loading="lazy">
                 </div>
                 <div class="info-card">
-                    <h3>Confusion Matrix: Moisturizer</h3>
-                    <img src="assets/confusion_matrix_moisturizer.png" alt="CM Moisturizer" loading="lazy">
-                </div>
-                <div class="info-card">
                     <h3>Silhouette Score</h3>
-                    <img src="assets/silhouette_score_per_type.png" alt="Silhouette Score" loading="lazy">
+                    <img src="assets/silhouette_score_per_type.png" alt="Silhouette" loading="lazy">
                 </div>
             </div>
         </div>
 
-        <!-- KONTEN TAB 3: WAWASAN PRODUK -->
+        <!-- KONTEN TAB 3: WAWASAN -->
         <div id="tab-insights" class="tab-content">
             <div class="info-grid">
-                <div class="info-card">
-                    <h3>Kompleksitas Formula</h3>
-                    <img src="assets/eda_complexity_by_type.png" alt="Complexity" loading="lazy">
-                </div>
-                <div class="info-card">
-                    <h3>Rata-rata Kehadiran Bahan</h3>
-                    <img src="assets/eda_avg_ingredients_by_type.png" alt="Avg Ingredients" loading="lazy">
+                <div class="info-card full-width">
+                    <h3>Korelasi Bahan Aktif</h3>
+                    <img src="assets/eda_ingredients_correlation_heatmap.png" alt="Heatmap" loading="lazy">
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script src="script.js"></script>
 

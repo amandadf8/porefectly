@@ -322,18 +322,29 @@ function getImage(type) {
 
 }
 
-// FUNGSI NAVIGASI TAB INFO MODEL
+// FUNGSI BUKA/TUTUP MODAL
+function toggleModelModal() {
+    const modal = document.getElementById('model-modal');
+    if (modal.style.display === 'none' || modal.style.display === '') {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Mencegah scroll body saat modal terbuka
+    } else {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Mengaktifkan scroll kembali
+    }
+}
+
+// TUTUP MODAL JIKA KLIK DI LUAR AREA PUTIH
+document.getElementById('model-modal').addEventListener('click', function(e) {
+    if (e.target === this) toggleModelModal();
+});
+
+// FUNGSI TAB DI DALAM MODAL (Sama seperti versi section sebelumnya)
 function openModelTab(tabId) {
-    // Sembunyikan semua konten tab
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    
-    // Hapus status active dari semua tombol
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     
-    // Tampilkan tab yang dipilih
     document.getElementById(tabId).classList.add('active');
-    
-    // Set tombol yang diklik menjadi aktif
     const clickedBtn = Array.from(document.querySelectorAll('.tab-btn'))
         .find(btn => btn.getAttribute('onclick').includes(tabId));
     if (clickedBtn) clickedBtn.classList.add('active');
